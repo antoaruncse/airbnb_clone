@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<p>
+  <strong>Home type:</strong>
+  <%= @property.home_type %>
+</p>
+
+<p>
+  <strong>Room type:</strong>
+  <%= @property.room_type %>
+</p>
+
+<p>
+  <strong>Accomodates:</strong>
+  <%= @property.accomodates %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @property.city %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @property.address %>
+</p>
+
+<p>
+  <strong>Price night:</strong>
+  <%= @property.price_night %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @property.title %>
+</p>
+
+<%= link_to 'Edit', edit_user_property_path(current_user.id,@property.id),:class => "btn btn-info" %> |
+<%= link_to 'Back', user_properties_path ,:class => "btn btn-info"%>

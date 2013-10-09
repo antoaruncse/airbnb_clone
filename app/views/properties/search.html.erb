@@ -1,0 +1,78 @@
+
+<center>
+	
+<div id="flash">
+       <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+     
+  </div>
+
+
+
+	<%unless !@property.blank?  %>
+		<% unless   @properties.blank? %>
+			
+			<% @properties  %>
+					
+			<div class="div_table">
+				<div class="div_table_header">
+					<div class="div_th"> Owner </div> 
+					<div class="div_th">Home Type  </div> 
+					<div class="div_th">Number of Accommodates Allowed  </div>
+					<div class="div_th">Address </div> 
+					<div class="div_th">Price Per Night </div>
+		 			<div class="div_th"> </div>
+				</div>
+
+				<% @properties.each do |p| %>
+
+
+
+ 				<div class="div_tr">
+	 				<div class="div_td"> 
+					
+					</div>
+					<div class="div_td">
+						<%= p.home_type  %>
+				 	</div>
+					<div class="div_td">
+						<%= p.accomodates  %> 
+					</div>
+					<div class="div_td">
+						<%=p.address%>
+					</div>
+	 				<div class="div_td">
+	 					<%=p.price_night%>Rs.
+	 				</div>
+					<div>
+					<%=link_to "Book" ,new_user_property_booking_path(current_user.id,p.id),:class => "btn btn-info" %>
+					</div>
+				</div>
+
+				<%end%>
+			</div>
+
+
+
+		<% else%>
+			<div class="jumbotron">
+			  <div class="container">
+				<div class="alert alert-danger">No Properties avail at this time try again with alternate</div>
+				
+				</div></div>
+		<% end %>
+	<% end %>
+
+	</div>
+	
+
+
+
+
+
+
+</center>
+
+
+ 

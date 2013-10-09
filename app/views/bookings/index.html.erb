@@ -1,0 +1,40 @@
+<h1>Listing bookings</h1>
+ <% unless @bookings.blank? %>
+<table>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>User</th>
+      <th>Check in date</th>
+      <th>Check out date</th>
+      <th>No accomodates</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+   
+    <% @bookings.each do |booking| %>
+      <tr>
+        <td><%= booking.property_id %></td>
+        <td><%= booking.user.first_name %></td>
+        <td><%= booking.check_in_date.to_date %></td>
+        <td><%= booking.check_out_date.to_date %></td>
+        <td><%= booking.no_accomodates %></td>
+       
+     <!--   <td><%= link_to 'Edit', edit_user_property_booking_path(current_user.id,params[:property_id],booking.id),:class => "btn btn-info" %></td> -->
+        <td><%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-info" %></td>
+      </tr>
+    <% end %>
+   
+  </tbody>
+</table>
+ <%else%>
+
+      <div class="alert alert-warning">There are no booking history </div>
+    <%end%>
+<br>
+
+<%= link_to 'New Booking', new_booking_path,:class => "btn btn-info" %>

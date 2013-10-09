@@ -1,0 +1,49 @@
+<%= form_for(@property, :url=> user_properties_path(current_user.id)) do |f| %>
+  <% if @property.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@property.errors.count, "error") %> prohibited this property from being saved:</h2>
+
+      <ul>
+      <% @property.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    
+    <%= f.hidden_field :user_id, :value=> current_user.id %>
+  </div>
+  <div class="field">
+    <%= f.label :home_type %><br>
+   <%= f.select :home_type, options_for_select([['House', 'House'], ['Villa', 'Villa'] , ['Apartment', 'Apartment'] ]) %>
+  </div>
+  <div class="field">
+    <%= f.label :room_type %><br>
+   <%= f.select :room_type, options_for_select([['Entier Home', 'Entier Home'], ['Private Room', 'Private Room'] , ['Shared', 'Shared'] ]) %>
+  </div>
+  <div class="field">
+    <%= f.label :accomodates %><br>
+    <%= f.number_field :accomodates %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br>
+    <%= f.text_field :city, :onfocus=>"new google.maps.places.Autocomplete(this);" %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :price_night %><br>
+    <%= f.number_field :price_night %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,41 @@
+<h1>Listing properties</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Home type</th>
+      <th>Room type</th>
+      <th>Accomodates</th>
+      <th>City</th>
+      <th>Address</th>
+      <th>Price night</th>
+      <th>Title</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @properties.each do |property| %>
+      <tr>
+        <td><%= current_user.first_name %></td>
+        <td><%= property.home_type %></td>
+        <td><%= property.room_type %></td>
+        <td><%= property.accomodates %></td>
+        <td><%= property.city %></td>
+        <td><%= property.address %></td>
+        <td><%= property.price_night %></td>
+        <td><%= property.title %></td>
+        <td><%= link_to 'Booking History', user_property_bookings_path(current_user.id,property.id),:class => "btn btn-info" %></td>
+        <td><%= link_to 'Edit', edit_user_property_path(current_user.id,property.id) ,:class => "btn btn-info"%></td>
+        <td><%= link_to 'Destroy', user_property_path(current_user.id,property.id),:class => "btn btn-info", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Property', new_user_property_path ,:class => "btn btn-info"%>

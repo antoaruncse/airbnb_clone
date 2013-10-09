@@ -1,0 +1,41 @@
+<h1>Listing users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Password digest</th>
+      <th>Mobile</th>
+      <th>Address</th>
+      <th>Country</th>
+      <th>Remember token</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.password_digest %></td>
+        <td><%= user.mobile %></td>
+        <td><%= user.address %></td>
+        <td><%= user.country %></td>
+        <td><%= user.remember_token %></td>
+        <td><%= link_to 'Show', user ,:class => "btn btn-info"%></td>
+        <td><%= link_to 'Edit', edit_user_path(user) ,:class => "btn btn-info"%></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } ,:class => "btn btn-info"%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_user_path ,:class => "btn btn-info"%>

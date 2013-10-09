@@ -1,0 +1,42 @@
+<%= form_for(@booking, :url=> user_property_booking_path(params[:user_id],params[:property_id],params[:id])) do |f| %>
+  <% if @booking.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+
+      <ul>
+      <% @booking.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    
+    <%= f.hidden_field :property_id,:value => params[:property_id] %>
+  </div>
+  <div class="field">
+   
+    <%= f.hidden_field :user_id ,:value => current_user.id%>
+  </div>
+  <div class="field">
+    <%= f.label :check_in_date %><br>
+    <input type="date" id="check_in_date"  name="booking[check_in_date]" value= <%= cookies[:check_in_date]%> >
+  </div>
+  <div class="field">
+    <%= f.label :check_out_date %><br>
+    <input type="date" id="check_out_date"  name="booking[check_out_date]" value= <%= cookies[:check_out_date]%> >
+  </div>
+  <div class="field">
+    Maximum Number of Accomadates to allowed<br>
+    <%= f.text_field :no_accomodates ,:readonly=> true,:value=>@property.accomodates %>
+      <input type="hidden" value=<%= @property.price_night %> id="price_per">
+  </div>
+   Price per day
+  <div>
+    <%= @property.price_night %> 
+  </div>
+  <div class="actions">
+    <%= f.submit :value=>"Book",:onclick =>" return calculate_search()" %>
+  </div>
+<% end %>

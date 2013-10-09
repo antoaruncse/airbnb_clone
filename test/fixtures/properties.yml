@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  home_type: MyString
+  room_type: MyString
+  accomodates: 1
+  city: MyString
+  address: MyString
+  price_night: 1
+  title: MyString
+
+two:
+  user_id: 1
+  home_type: MyString
+  room_type: MyString
+  accomodates: 1
+  city: MyString
+  address: MyString
+  price_night: 1
+  title: MyString
